@@ -23,11 +23,9 @@ function curValue(user) {
 window.addEventListener('load', event => {
   const a = load(LOCALSTORAGE_KEY);
   if (a != undefined) {
-    // console.log("not empty - ", a);
     input.value = a.email;
     area.value = a.message;
   } else {
-    // console.log("it's empty")
   }
 });
 
@@ -41,7 +39,6 @@ function onButtonClick(event) {
   form.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
 }
-
 const save = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
