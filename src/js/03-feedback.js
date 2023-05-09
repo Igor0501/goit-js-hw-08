@@ -12,18 +12,26 @@ let formData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
 getLocalStorageItems();
 
+const formData = {};
+
 function onFormSumbit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (e.target.elements.email.value && e.target.elements.message.value) {
-        console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+  if (e.target.elements.email.value && e.target.elements.message.value) {
+    console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
 
-        e.currentTarget.reset();
-        localStorage.removeItem(STORAGE_KEY);
-        formData = {};
-    } else {
-        alert('Fill all fields!');
-    }
+    formData.email = e.target.elements.email.value;
+    formData.message = e.target.elements.message.value;
+
+    e.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+    console.log(formData);
+
+    formData.email = "";
+    formData.message = "";
+  } else {
+    alert('Fill all fields!');
+  }
 }
 
 function onInput(e) {
